@@ -21,6 +21,24 @@
                         value="{{ $student->name }}">
                 </div>
                 <div class="form-group">
+                    <label for="name">Nominal</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="spp_id"
+                        name="spp_id"
+                        value="{{ $student->spp->nominal }}">
+                </div>
+                <div class="form-group">
+                    <label for="name">Kelas</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="classes_id"
+                        name="classes_id"
+                        value="{{ $student->classes->kelas }}">
+                </div>
+                <div class="form-group">
                     <label for="name">Email</label>
                     <input
                         type="email"

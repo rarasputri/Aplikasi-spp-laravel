@@ -70,7 +70,7 @@
             <li><a href="#hero" class="active">Home<br></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="{{route('siswa.login')}}">Siswa</a></li>
-            <li><a href="{{route('auth.login')}}">Guru</a></li>
+            <li><a href="{{route('auth.login')}}">Petugas</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -189,7 +189,7 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Impact</span>
+            <span class="sitename">LAB SCHOOL</span>
           </a>
           <p>
             Di LAB SCHOOL, kami percaya bahwa setiap siswa berhak mendapatkan kesempatan untuk sukses, itulah mengapa kami menawarkan lingkungan belajar yang inklusif dan mendukung.</p>
@@ -202,7 +202,7 @@
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
+          <h4>link</h4>
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About us</a></li>

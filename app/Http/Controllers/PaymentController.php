@@ -47,13 +47,6 @@ class PaymentController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'spp_id' => 'required|exists:spps,id',
-            'jumlah_bayar' => 'required|numeric|min:1',
-            'student_id' => 'required|exists:students,id',
-        ]);
-
         Payment::create([
             'user_id' => $request->user_id,
             'spp_id' => $request->spp_id,
@@ -65,5 +58,35 @@ class PaymentController extends Controller
         ]);
 
         return redirect()->route('payment.index')->with('success', 'Transaksi berhasil ditambahkan.');
+    }
+
+    public function edit($id)
+    {
+        $payment = Payment::findOrFail($id);
+        return view('payment', compact('payment'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+
+        $payment = Payment::findOrFail($id);
+
+        $aa = $payment->jumlah_bayar + $request->jumlah_bayar;
+
+        $payment->user_id  = $request->user_id;
+        $payment->spp_id = $request->spp_id;
+        $payment->student_id = $request->student_id;
+        $payment->jumlah_bayar = $aa;
+        $payment->save();
+
+        return redirect()->route('payment.index')->with('success', 'Data payment berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        Student::findOrFail($id)->delete();
+
+        return redirect()->back()->with('success', 'Pembayaran berhasil dihapus.');
     }
 }

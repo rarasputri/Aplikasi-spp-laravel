@@ -49,7 +49,6 @@ class StudentController extends Controller
 
         return redirect()->back()->with('success', 'Data siswa berhasil ditambahkan.');
     }
-
     public function edit($id)
     {
         $student = Student::findOrFail($id);
@@ -66,26 +65,16 @@ class StudentController extends Controller
             'nis' => 'required|integer',
             'nisn' => 'required|integer',
             'no_telp' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:students,email,' . $id,
-            'password' => 'required|string|min:3',
+            'email' => 'required', 'email', 'max:255',
         ]);
 
-        $student = Student::findOrFail($id);
+        Student::findOrFail($id)->update($request->only([
+            'spp_id', 'classes_id', 'name', 'alamat', 'nis', 'nisn', 'no_telp', 'email',
+        ]));
 
-        $student->update([
-            'spp_id' => $request->input('spp_id'),
-            'classes_id' => $request->input('classes_id'),
-            'name' => $request->input('name'),
-            'alamat' => $request->input('alamat'),
-            'nis' => $request->input('nis'),
-            'nisn' => $request->input('nisn'),
-            'no_telp' => $request->input('no_telp'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-        ]);
-
-        return redirect()->route('student.index')->with('success', 'Data siswa berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Data siswa berhasil diperbarui.');
     }
+
 
     public function destroy($id)
     {
